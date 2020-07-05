@@ -21,6 +21,7 @@ export default function Login() {
       .then((res) => {
         console.log(res.data.token);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("username", res.data.user.username);
         userHasAuthenticated(true);
         history.push("/");
       });

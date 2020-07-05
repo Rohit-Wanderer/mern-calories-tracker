@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import Navbar from "./navbar.component";
+import EditMeal from "./edit-meal.component";
+import AddMeal from "./add-meal.component";
+import MealList from "./meal-list.component";
 
 export default function Home() {
   const history = useHistory();
@@ -23,8 +29,14 @@ export default function Home() {
 
   return (
     !isAuthenticating && (
-      <div className="App">
-        <h4>HOME</h4>
+      <div className="container">
+        <Router>
+          <Navbar />
+          <br />
+          <Route path="/" exact component={MealList} />
+          <Route path="/edit/:id" exact component={EditMeal} />
+          <Route path="/add" exact component={AddMeal} />
+        </Router>
       </div>
     )
   );
