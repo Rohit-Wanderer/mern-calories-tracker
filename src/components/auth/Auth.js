@@ -54,7 +54,7 @@ export class Auth extends Component {
 const OtherSide = (props) => {
   return (
     <div
-      className="other-side"
+      className="other-side right"
       ref={props.containerRef}
       onClick={props.onClick}
     >
