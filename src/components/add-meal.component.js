@@ -44,11 +44,15 @@ export default class AddMeal extends Component {
     const username = localStorage.getItem("username");
     const token = localStorage.getItem("token");
 
+    // Fix constant error
+    var date = this.state.date;
+
+    date.setDate(date.getDate() + 1);
     const meal = {
       username: username,
       meal: this.state.meal,
       calories: this.state.calories,
-      date: this.state.date,
+      date: date,
     };
 
     console.log(meal);
@@ -82,7 +86,7 @@ export default class AddMeal extends Component {
           <div className="form-group">
             <label>Calories : </label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               value={this.state.calories}
               onChange={this.onChangeCalories}

@@ -6,6 +6,7 @@ import Navbar from "./navbar.component";
 import EditMeal from "./edit-meal.component";
 import AddMeal from "./add-meal.component";
 import MealList from "./meal-list.component";
+import SelectDate from "./meal-list.component";
 
 export default function Home() {
   const history = useHistory();
@@ -36,6 +37,7 @@ export default function Home() {
           <Route path="/" exact component={MealList} />
           <Route path="/edit/:id" exact component={EditMeal} />
           <Route path="/add" exact component={AddMeal} />
+          <Route path="/selectDate" exact component={SelectDate} />
         </Router>
       </div>
     )

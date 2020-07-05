@@ -13,16 +13,23 @@ export default function SignUp() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     axios
       .post("http://localhost:4000/users/signup", {
         username: username,
         password: password,
       })
       .then((res) => {
-        console.log(res.data.token);
-        localStorage.setItem("token", res.data.token);
-        userHasAuthenticated(true);
-        history.push("/");
+        if (res.status === 200) {
+          localStorage.setItem("token", res.data.token);
+          userHasAuthenticated(true);
+          history.push("/");
+        } else {
+          if (res.status === 203) alert("Username Already Exists");
+        }
+      })
+      .catch((res) => {
+        console.log(res);
       });
   }
 
@@ -32,6 +39,7 @@ export default function SignUp() {
 
   return (
     <div className="base-container">
+      <h2>Calorie Tracker</h2>
       <div className="header">SignUp</div>
       <div className="content">
         <div className="form">

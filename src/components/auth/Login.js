@@ -33,6 +33,7 @@ export default function Login() {
 
   return (
     <div className="base-container">
+      <h2>Calorie Tracker</h2>
       <div className="header">Login</div>
       <div className="content">
         <div className="form">

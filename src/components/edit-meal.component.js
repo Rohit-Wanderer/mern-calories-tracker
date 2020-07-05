@@ -49,9 +49,7 @@ export default class EditMeal extends Component {
   }
 
   onChangeCalories(e) {
-    this.setState({
-      calories: e.target.value,
-    });
+    this.setState({ calories: e.target.value });
   }
 
   onChangeDate(date) {
@@ -62,6 +60,7 @@ export default class EditMeal extends Component {
 
   onSubmit(e) {
     e.preventDefault();
+
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
 
@@ -107,7 +106,7 @@ export default class EditMeal extends Component {
           <div className="form-group">
             <label>Calories </label>
             <input
-              type="text"
+              type="number"
               required
               className="form-control"
               value={this.state.calories}
