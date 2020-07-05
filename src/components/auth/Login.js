@@ -19,7 +19,6 @@ export default function Login() {
         password: password,
       })
       .then((res) => {
-        console.log(res.data.token);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("username", res.data.user.username);
         userHasAuthenticated(true);
@@ -33,7 +32,7 @@ export default function Login() {
 
   return (
     <div className="base-container">
-      <h2>Calorie Tracker</h2>
+      <h2>Calories Tracker</h2>
       <div className="header">Login</div>
       <div className="content">
         <div className="form">

@@ -20,8 +20,10 @@ export default function SignUp() {
         password: password,
       })
       .then((res) => {
-        if (res.status === 200) {
+        console.log(res.status);
+        if (res.status === 201) {
           localStorage.setItem("token", res.data.token);
+          localStorage.setItem("username", res.data.user.username);
           userHasAuthenticated(true);
           history.push("/");
         } else {
@@ -39,7 +41,7 @@ export default function SignUp() {
 
   return (
     <div className="base-container">
-      <h2>Calorie Tracker</h2>
+      <h2>Calories Tracker</h2>
       <div className="header">SignUp</div>
       <div className="content">
         <div className="form">

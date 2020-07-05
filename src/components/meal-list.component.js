@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import underscore from "underscore";
 
@@ -11,7 +11,7 @@ const Meal = (props) => (
     <td>
       <Link to={"/edit/" + props.meal._id}>edit</Link> |{" "}
       <a
-        href="#"
+        href="/"
         onClick={() => {
           props.deleteMeal(props.meal._id);
         }}
