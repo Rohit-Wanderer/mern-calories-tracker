@@ -46,7 +46,6 @@ export default class AddMeal extends Component {
 
     // Fix constant error
     var date = this.state.date;
-
     date.setDate(date.getDate() + 1);
     const meal = {
       username: username,

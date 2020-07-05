@@ -13,9 +13,8 @@ export default class EditMeal extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      //   username: '',
-      description: "",
-      duration: 0,
+      meal: "",
+      calories: 0,
       date: new Date(),
       users: [],
     };
@@ -31,10 +30,14 @@ export default class EditMeal extends Component {
         },
       })
       .then((response) => {
+        // Fix constant error
+        var date = new Date(response.data.date);
+        date.setDate(date.getDate() - 1);
+
         this.setState({
           meal: response.data.meal,
           calories: response.data.calories,
-          date: new Date(response.data.date),
+          date: date,
         });
       })
       .catch(function (error) {
@@ -64,14 +67,15 @@ export default class EditMeal extends Component {
     const token = localStorage.getItem("token");
     const username = localStorage.getItem("username");
 
+    // Fix constant error
+    var date = this.state.date;
+    date.setDate(date.getDate() + 1);
     const meal = {
       username: username,
       meal: this.state.meal,
       calories: this.state.calories,
-      date: this.state.date,
+      date: date,
     };
-
-    console.log(meal);
 
     axios
       .put(

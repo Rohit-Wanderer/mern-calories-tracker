@@ -75,7 +75,7 @@ export default class MealList extends Component {
         var groupDate = underscore.groupBy(ret, (meal) => {
           return meal.date.substring(0, 10);
         });
-        console.log(groupDate);
+
         this.setState({
           meals: ret,
           dates: distDate,
@@ -102,6 +102,8 @@ export default class MealList extends Component {
     this.setState({
       meals: this.state.meals.filter((el) => el._id !== id),
     });
+
+    window.location = "/";
   }
 
   mealList() {
@@ -130,7 +132,6 @@ export default class MealList extends Component {
 
   onChangeDate(date) {
     if (!(date.target.value === "Select Date")) {
-      console.log(this.state.groupByDates);
       this.setState({
         selectDate: true,
         selectMeals: this.state.groupByDates[date.target.value],
